@@ -24,6 +24,9 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func backToMenuViewController(segue:UIStoryboardSegue) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

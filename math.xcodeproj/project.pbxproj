@@ -409,6 +409,7 @@
 				DC1E681A1A70C62F0030E0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC1E681B1A70C62F0030E0D1 /* Build configuration list for PBXNativeTarget "mathTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				DC1E681D1A70C62F0030E0D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

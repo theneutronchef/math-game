@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var prevCondition: Int!
     var condition: Int!
     var alive: Bool!
+    var running: Bool!
     
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var top: UILabel!
@@ -26,40 +27,45 @@ class ViewController: UIViewController {
     @IBOutlet weak var left: UILabel!
     @IBOutlet weak var condLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     func initScene() {
         scoreVal = 0
         alive = true
+        running = true
         update()
     }
     
     func update() {
-                // 0: Odd, 1: Even, 2: Square, 3: Prime, 4: Divisible by 3, 5: Divisible by 7, 6: Divisible by 11, 7: Divisble by 13, 8: Divisible by 17, 9: Divisible by 19
-        condition = Int(arc4random_uniform(3))
-        topVal = Int(arc4random_uniform(10))
-        botVal = Int(arc4random_uniform(10))
-        rightVal = Int(arc4random_uniform(10))
-        leftVal = Int(arc4random_uniform(10))
-        top.text = "\(topVal)"
-        bottom.text = "\(botVal)"
-        right.text = "\(rightVal)"
-        left.text = "\(leftVal)"
-        score.text = "\(scoreVal)"
-        switch(condition) {
-        case 1:
-            condLabel.text = "Even"
-        case 2:
-            condLabel.text = "Square"
-        default:
-            condLabel.text = "Odd"
+        // 0: Odd, 1: Even, 2: Square, 3: Prime, 4: Divisible by 3, 5: Divisible by 7, 6: Divisible by 11, 7: Divisble by 13, 8: Divisible by 17, 9: Divisible by 19
+        if running == true {
+            condition = Int(arc4random_uniform(3))
+            topVal = Int(arc4random_uniform(10))
+            botVal = Int(arc4random_uniform(10))
+            rightVal = Int(arc4random_uniform(10))
+            leftVal = Int(arc4random_uniform(10))
+            top.text = "\(topVal)"
+            bottom.text = "\(botVal)"
+            right.text = "\(rightVal)"
+            left.text = "\(leftVal)"
+            score.text = "\(scoreVal)"
+            switch(condition) {
+            case 1:
+                condLabel.text = "Even"
+            case 2:
+                condLabel.text = "Square"
+            default:
+                condLabel.text = "Odd"
+            }
+            
+            if alive == false {
+                stateLabel.text = "You are dead"
+                running = false
+            } else {
+                stateLabel.text = ""
+            }
         }
         
-        if alive == false {
-            stateLabel.text = "dead"
-            alive = true
-        } else {
-            stateLabel.text = "correct"
-        }
 
     }
     
@@ -84,6 +90,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func swipeUp(sender: UISwipeGestureRecognizer) {
         scoreVal = scoreVal + topVal
         checkStatus()
@@ -110,6 +117,9 @@ class ViewController: UIViewController {
 
     }
 
+    @IBAction func Restart(sender: UIButton) {
+        initScene()
+    }
 
 }
 
