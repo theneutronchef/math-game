@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC08CA731A842B8800BEA740 /* timerbar.png in Resources */ = {isa = PBXBuildFile; fileRef = DC08CA721A842B8800BEA740 /* timerbar.png */; };
+		DC08CA751A84412000BEA740 /* blackboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC08CA741A84412000BEA740 /* blackboard.jpg */; };
+		DC08CA771A854C8600BEA740 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC08CA761A854C8600BEA740 /* libsqlite3.dylib */; };
+		DC08CA791A854DF100BEA740 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA781A854DF100BEA740 /* ScoreViewController.swift */; };
+		DC08CA871A854F5600BEA740 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA7E1A854F5600BEA740 /* FMDatabase.m */; };
+		DC08CA881A854F5600BEA740 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA801A854F5600BEA740 /* FMResultSet.m */; };
+		DC08CA891A854F5600BEA740 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA821A854F5600BEA740 /* FMDatabaseQueue.m */; };
+		DC08CA8A1A854F5600BEA740 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA841A854F5600BEA740 /* FMDatabaseAdditions.m */; };
+		DC08CA8B1A854F5600BEA740 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = DC08CA861A854F5600BEA740 /* FMDatabasePool.m */; };
 		DC1E67FF1A70C62F0030E0D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E67FE1A70C62F0030E0D1 /* AppDelegate.swift */; };
 		DC1E68011A70C62F0030E0D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1E68001A70C62F0030E0D1 /* ViewController.swift */; };
 		DC1E68041A70C62F0030E0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC1E68021A70C62F0030E0D1 /* Main.storyboard */; };
@@ -27,6 +36,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC08CA721A842B8800BEA740 /* timerbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerbar.png; sourceTree = "<group>"; };
+		DC08CA741A84412000BEA740 /* blackboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackboard.jpg; sourceTree = "<group>"; };
+		DC08CA761A854C8600BEA740 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		DC08CA781A854DF100BEA740 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		DC08CA7B1A854F5500BEA740 /* math-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "math-Bridging-Header.h"; sourceTree = "<group>"; };
+		DC08CA7C1A854F5600BEA740 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = math/fmdb/src/fmdb/FMDB.h; sourceTree = "<group>"; };
+		DC08CA7D1A854F5600BEA740 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = math/fmdb/src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		DC08CA7E1A854F5600BEA740 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = math/fmdb/src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		DC08CA7F1A854F5600BEA740 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = math/fmdb/src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		DC08CA801A854F5600BEA740 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = math/fmdb/src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		DC08CA811A854F5600BEA740 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = math/fmdb/src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		DC08CA821A854F5600BEA740 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = math/fmdb/src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		DC08CA831A854F5600BEA740 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = math/fmdb/src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		DC08CA841A854F5600BEA740 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = math/fmdb/src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		DC08CA851A854F5600BEA740 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = math/fmdb/src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		DC08CA861A854F5600BEA740 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = math/fmdb/src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
 		DC1E67F91A70C62F0030E0D1 /* math.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = math.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1E67FD1A70C62F0030E0D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1E67FE1A70C62F0030E0D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC08CA771A854C8600BEA740 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +84,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC08CA711A842B7A00BEA740 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				DC08CA741A84412000BEA740 /* blackboard.jpg */,
+				DC08CA721A842B8800BEA740 /* timerbar.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		DC08CA7A1A854F3700BEA740 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				DC08CA7B1A854F5500BEA740 /* math-Bridging-Header.h */,
+				DC08CA7C1A854F5600BEA740 /* FMDB.h */,
+				DC08CA7D1A854F5600BEA740 /* FMDatabase.h */,
+				DC08CA7E1A854F5600BEA740 /* FMDatabase.m */,
+				DC08CA7F1A854F5600BEA740 /* FMResultSet.h */,
+				DC08CA801A854F5600BEA740 /* FMResultSet.m */,
+				DC08CA811A854F5600BEA740 /* FMDatabaseQueue.h */,
+				DC08CA821A854F5600BEA740 /* FMDatabaseQueue.m */,
+				DC08CA831A854F5600BEA740 /* FMDatabaseAdditions.h */,
+				DC08CA841A854F5600BEA740 /* FMDatabaseAdditions.m */,
+				DC08CA851A854F5600BEA740 /* FMDatabasePool.h */,
+				DC08CA861A854F5600BEA740 /* FMDatabasePool.m */,
+			);
+			name = database;
+			sourceTree = "<group>";
+		};
 		DC1E67F01A70C62F0030E0D1 = {
 			isa = PBXGroup;
 			children = (
+				DC08CA761A854C8600BEA740 /* libsqlite3.dylib */,
+				DC08CA7A1A854F3700BEA740 /* database */,
 				DC1E67FB1A70C62F0030E0D1 /* math */,
 				DC1E68111A70C62F0030E0D1 /* mathTests */,
 				DC1E67FA1A70C62F0030E0D1 /* Products */,
@@ -79,6 +135,7 @@
 		DC1E67FB1A70C62F0030E0D1 /* math */ = {
 			isa = PBXGroup;
 			children = (
+				DC08CA711A842B7A00BEA740 /* images */,
 				DC1E67FE1A70C62F0030E0D1 /* AppDelegate.swift */,
 				DC1E68001A70C62F0030E0D1 /* ViewController.swift */,
 				DC1E68021A70C62F0030E0D1 /* Main.storyboard */,
@@ -86,6 +143,7 @@
 				DC1E68071A70C62F0030E0D1 /* LaunchScreen.xib */,
 				DC1E67FC1A70C62F0030E0D1 /* Supporting Files */,
 				DC1E681E1A70D8DC0030E0D1 /* MenuViewController.swift */,
+				DC08CA781A854DF100BEA740 /* ScoreViewController.swift */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -196,7 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1E68041A70C62F0030E0D1 /* Main.storyboard in Resources */,
+				DC08CA731A842B8800BEA740 /* timerbar.png in Resources */,
 				DC1E68091A70C62F0030E0D1 /* LaunchScreen.xib in Resources */,
+				DC08CA751A84412000BEA740 /* blackboard.jpg in Resources */,
 				DC1E68061A70C62F0030E0D1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,9 +275,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC08CA881A854F5600BEA740 /* FMResultSet.m in Sources */,
 				DC1E68011A70C62F0030E0D1 /* ViewController.swift in Sources */,
 				DC1E681F1A70D8DC0030E0D1 /* MenuViewController.swift in Sources */,
+				DC08CA891A854F5600BEA740 /* FMDatabaseQueue.m in Sources */,
+				DC08CA8B1A854F5600BEA740 /* FMDatabasePool.m in Sources */,
 				DC1E67FF1A70C62F0030E0D1 /* AppDelegate.swift in Sources */,
+				DC08CA871A854F5600BEA740 /* FMDatabase.m in Sources */,
+				DC08CA791A854DF100BEA740 /* ScoreViewController.swift in Sources */,
+				DC08CA8A1A854F5600BEA740 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +406,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = math/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "math-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +420,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = math/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "math-Bridging-Header.h";
 			};
 			name = Release;
 		};

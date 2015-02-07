@@ -9,19 +9,31 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-
+    
+    
     @IBAction func startGame(sender: UIButton) {
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "blackboard.jpg")!.drawInRect(self.view.bounds)
+        
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     @IBAction func backToMenuViewController(segue:UIStoryboardSegue) {

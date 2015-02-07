@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let numberOfConditions: UInt32 = 4
+    let databaseName:NSString = "math.db"
+    var databasePath = NSString()
     
+    let baseConditions: UInt32 = 4
+    let baseRange: UInt32 = 10
+    
+    var prevVal: Int!
     var scoreVal: Int!
     var topVal: Int!
     var botVal: Int!
@@ -23,6 +28,11 @@ class ViewController: UIViewController {
     var condition: Int!
     var alive: Bool!
     var running: Bool!
+    var timer: NSTimer!
+    var timerSpeed: Int!
+    var currLevel: Int!
+
+    let startSpeed = 2
     
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var top: UILabel!
@@ -32,54 +42,94 @@ class ViewController: UIViewController {
     @IBOutlet weak var condLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var timerBar: UIImageView!
     
     func initScene() {
         scoreVal = 0
         vals = [0, 0, 0, 0]
+        currLevel = 0
         alive = true
         running = true
+//        timerBar.image = UIImage(named: "timerBar")
+//        timerBar.frame = CGRect(x: 45, y: 90, width: 240, height: 30)
+        timerSpeed = startSpeed
         update()
+    }
+    
+    func timeUpdate() {
+        if running == true {
+            let barWidth = Int(timerBar.frame.width)
+            if barWidth > 0 {
+                timerBar.frame = CGRect(x: 45, y: 90, width: barWidth - timerSpeed, height: 30)
+            } else {
+                alive = false
+                update()
+            }
+            if barWidth < 80 {
+                timerBar.backgroundColor = UIColor.redColor()
+            }
+        }
+
     }
     
     func update() {
         // 0: Odd, 1: Even, 2: Square, 3: Prime, 4: Divisible by 3, 5: Divisible by 7, 6: Divisible by 11, 7: Divisble by 13, 8: Divisible by 17, 9: Divisible by 19
         if running == true {
-            condition = Int(arc4random_uniform(numberOfConditions))
-            answerPos = Int(arc4random_uniform(3))
+            currLevel = Int(scoreVal / 50)
+            timerSpeed = startSpeed + currLevel
             
-            for pos in 0...3 {
-                vals[Int(pos)] = Int(arc4random_uniform(10))
-            }
-
-            switch(condition) {
-            case 1:
-                condLabel.text = "Even"
-                if !isEvenNumber(vals[answerPos] + scoreVal) {
-                    vals[answerPos] = vals[answerPos] + 1
-                }
-            case 2:
-                condLabel.text = "Square"
-                vals[answerPos] = nextSquare(scoreVal) - scoreVal
-            case 3:
-                condLabel.text = "Prime"
-                vals[answerPos] = nextPrimeNumber(scoreVal) - scoreVal
-            default:
-                condLabel.text = "Odd"
-                if !isOddNumber(vals[answerPos] + scoreVal) {
-                    vals[answerPos] = vals[answerPos] + 1
-                }
-            }
-
-            top.text = "\(vals[0])"
-            bottom.text = "\(vals[1])"
-            right.text = "\(vals[2])"
-            left.text = "\(vals[3])"
-            score.text = "\(scoreVal)"
             if alive == false {
                 stateLabel.text = "You are dead"
+                stateLabel.textColor = UIColor.redColor()
                 running = false
+                self.addScore(prevVal)
             } else {
+                prevVal = scoreVal
+                condition = Int(arc4random_uniform(baseConditions + currLevel))
+                answerPos = Int(arc4random_uniform(3))
+                
+                for pos in 0...3 {
+                    vals[Int(pos)] = Int(arc4random_uniform(baseRange + 5 * currLevel))
+                }
+                
+                switch(condition) {
+                case 1:
+                    condLabel.text = "Even"
+                    if !isMultiple(vals[answerPos] + scoreVal, i: 2) {
+                        vals[answerPos] = vals[answerPos] + 1
+                    }
+                case 2:
+                    condLabel.text = "Square"
+                    vals[answerPos] = addToSquare(scoreVal)
+                case 3:
+                    condLabel.text = "Prime"
+                    vals[answerPos] = addToPrimeNumber(scoreVal)
+                case 4:
+                    condLabel.text = "Multiple of 3"
+                    vals[answerPos] = addToMultiple(scoreVal, i: 3)
+                case 5:
+                    condLabel.text = "Multiple of 5"
+                    vals[answerPos] = addToMultiple(scoreVal, i: 5)
+                case 6:
+                    condLabel.text = "Multiple of 7"
+                    vals[answerPos] = addToMultiple(scoreVal, i: 7)
+                case 7:
+                    condLabel.text = "Multiple of 11"
+                    vals[answerPos] = addToMultiple(scoreVal, i: 11)
+                default:
+                    condLabel.text = "Odd"
+                    if isMultiple(vals[answerPos] + scoreVal, i: 2) {
+                        vals[answerPos] = vals[answerPos] + 1
+                    }
+                }
+                top.text = "\(vals[0])"
+                bottom.text = "\(vals[1])"
+                right.text = "\(vals[2])"
+                left.text = "\(vals[3])"
+                score.text = "\(scoreVal)"
                 stateLabel.text = ""
+                timerBar.frame = CGRect(x: 45, y: 90, width: 240, height: 30)
+                timerBar.backgroundColor = UIColor.greenColor()
             }
         }
         
@@ -89,13 +139,21 @@ class ViewController: UIViewController {
     func checkStatus() {
         switch(condition) {
         case 1:
-            if !isEvenNumber(scoreVal) {alive = false}
+            if !isMultiple(scoreVal, i: 2) {alive = false}
         case 2:
             if !isSquareNumber(scoreVal) {alive = false}
         case 3:
             if !isPrimeNumber(scoreVal) {alive = false}
+        case 4:
+            if !isMultiple(scoreVal, i: 3) {alive = false}
+        case 5:
+            if !isMultiple(scoreVal, i: 5) {alive = false}
+        case 6:
+            if !isMultiple(scoreVal, i: 7) {alive = false}
+        case 7:
+            if !isMultiple(scoreVal, i: 11) {alive = false}
         default:
-            if !isOddNumber(scoreVal) {alive = false}
+            if isMultiple(scoreVal, i: 2) {alive = false}
         }
     }
     
@@ -103,11 +161,50 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         initScene()
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "blackboard.jpg")!.drawInRect(self.view.bounds)
+        
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.view.backgroundColor = UIColor(patternImage: image)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.04, target: self, selector: Selector("timeUpdate"), userInfo: nil, repeats: true)
+        
+        let filemgr = NSFileManager.defaultManager()
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let docsDir = dirPaths[0] as String
+        
+        databasePath = docsDir.stringByAppendingPathComponent(databaseName)
+        
+        if !filemgr.fileExistsAtPath(databasePath) {
+            
+            let scoreDB = FMDatabase(path: databasePath)
+            
+            if scoreDB == nil {
+                println("Error: \(scoreDB.lastErrorMessage())")
+            }
+            
+            if scoreDB.open() {
+                let sql_stmt = "CREATE TABLE IF NOT EXISTS SCORES (ID INTEGER PRIMARY KEY AUTOINCREMENT, SCORE INTEGER)"
+                if !scoreDB.executeStatements(sql_stmt) {
+                    println("Error: \(scoreDB.lastErrorMessage())")
+                }
+                scoreDB.close()
+            } else {
+                println("Error: \(scoreDB.lastErrorMessage())")
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     @IBAction func swipeUp(sender: UISwipeGestureRecognizer) {
@@ -138,32 +235,27 @@ class ViewController: UIViewController {
 
     @IBAction func Restart(sender: UIButton) {
         initScene()
-    }
-    
-    func isEvenNumber(i: Int) -> Bool {
-        if scoreVal % 2 == 0 {return true}; return false
-    }
-    
-    func isOddNumber(i: Int) -> Bool {
-        if scoreVal % 2 == 1 {return true}; return false
+        timerBar.frame = CGRect(x: 45, y: 90, width: 240, height: 30)
     }
     
     func isSquareNumber(i: Int) -> Bool {
-        if Int(sqrt(Float(i))) * Int(sqrt(Float(i))) == i {return true}; return false
+        return Int(sqrt(Float(i))) * Int(sqrt(Float(i))) == i
     }
     
-    func nextSquare(i: Int) -> Int {
+    func addToSquare(i: Int) -> Int {
         var j: Int
-        j = i
+        j = i + 1
         while !isSquareNumber(j) {
             j = j + 1
         }
-        return j
+        return j - i
     }
     
     func isPrimeNumber(i: Int) -> Bool {
-        if i < 4 {
+        if i == 1 {
             return false
+        } else if i < 4 {
+            return true
         }
         var root = sqrt(Double(i))
         var max = floor(root)
@@ -175,13 +267,36 @@ class ViewController: UIViewController {
         return true
     }
     
-    func nextPrimeNumber(i: Int) -> Int {
+    func addToPrimeNumber(i: Int) -> Int {
         var j: Int
-        j = i
+        j = i + 1
         while !isPrimeNumber(j) {
             j = j + 1
         }
-        return j
+        return j - i
+    }
+    
+    func isMultiple(score: Int, i: Int) -> Bool {
+        return score % i == 0
+    }
+    
+    func addToMultiple(score: Int, i: Int) -> Int {
+        return i - score % i
+    }
+    
+    func addScore(score: Int) {
+        let scoreDB = FMDatabase(path: databasePath)
+        
+        if scoreDB.open() {
+            let insertSQL = "INSERT INTO SCORES (SCORE) VALUES (\(score))"
+            let result = scoreDB.executeUpdate(insertSQL, withArgumentsInArray: nil)
+            
+            if !result {
+                println("Error: \(scoreDB.lastErrorMessage())")
+            }
+        } else {
+            println("Error: \(scoreDB.lastErrorMessage())")
+        }
     }
 
 }
