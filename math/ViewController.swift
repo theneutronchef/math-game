@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         if running == true {
             let barWidth = Int(timerBar.frame.width)
             if barWidth > 0 {
-                timerBar.frame = CGRect(x: 45, y: 90, width: barWidth - timerSpeed, height: 30)
+                timerBar.frame = CGRect(x: 40, y: 325, width: barWidth - timerSpeed, height: 30)
             } else {
                 alive = false
                 update()
@@ -127,8 +127,9 @@ class ViewController: UIViewController {
                 right.text = "\(vals[2])"
                 left.text = "\(vals[3])"
                 score.text = "\(scoreVal)"
+                score.font = UIFont(name: score.font.fontName, size: CGFloat(24 + currLevel * 6))
                 stateLabel.text = ""
-                timerBar.frame = CGRect(x: 45, y: 90, width: 240, height: 30)
+                timerBar.frame = CGRect(x: 40, y: 325, width: 240, height: 30)
                 timerBar.backgroundColor = UIColor.greenColor()
             }
         }
@@ -235,7 +236,7 @@ class ViewController: UIViewController {
 
     @IBAction func Restart(sender: UIButton) {
         initScene()
-        timerBar.frame = CGRect(x: 45, y: 90, width: 240, height: 30)
+        timerBar.frame = CGRect(x: 45, y: 325, width: 240, height: 30)
     }
     
     func isSquareNumber(i: Int) -> Bool {

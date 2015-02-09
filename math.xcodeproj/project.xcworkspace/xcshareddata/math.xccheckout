@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>04101981B66E318109934C9516F88D824BB96459</key>
-		<string>../../math/fmdb/</string>
+		<string>../../math/fmdb</string>
 		<key>CAFF8AC3C2A828BA8193BF350A9BF63B4333635C</key>
 		<string>../..</string>
 	</dict>
